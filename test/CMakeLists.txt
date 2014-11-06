@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 2.8)
+SET(CMAKE_BUILD_TYPE Debug)
+mytest(vpTree_Tree S Tree.cpp)
+mytest(vpTree_Node S Node.cpp)
+mytest(vpTree_Omega S Omega.cpp)
+mytest(vpTree_construct S construct.cpp)
+mytest(vpTree_profile L profile.cpp)

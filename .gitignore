@@ -1,28 +1,29 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# git ls-files --others --exclude-from=.git/info/exclude
+# Lines that start with '#' are comments.
+# For a project mostly in C, the following would be a good set of
+# exclude patterns (uncomment them if you want to use them):
+*.[oad]
+*~
+.*.swp
 
-# Precompiled Headers
-*.gch
-*.pch
+# datas
+*.dat
+*.csv
+*.log
+*.dot
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# Doxygen
+doc/html
+.tags
 
-# Fortran module files
-*.mod
+# cmake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+# for test
+TEST*
+CTestTestfile.cmake
+Testing
 
-# Executables
-*.exe
-*.out
-*.app
