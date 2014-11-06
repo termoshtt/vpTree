@@ -4,7 +4,6 @@
 #include "../output.hpp"
 
 #include "utility/test2.hpp"
-#include "utility/io.hpp"
 
 namespace U = utility;
 namespace vp = U::tree::vp;
