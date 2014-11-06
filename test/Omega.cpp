@@ -29,5 +29,11 @@ int main(int argc, char const *argv[]) {
     std::cout << e.what() << std::endl;
   } // deleted index
 
+  for (auto pair : points) {
+    auto idx = std::get<0>(pair);
+    auto p = std::get<1>(pair);
+    std::cout << idx << " " << p[0] << std::endl;
+  }
+
   return 0;
 }

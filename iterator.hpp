@@ -1,5 +1,7 @@
 #pragma once
 
+#include "utility/assert.hpp"
+
 #include <vector>
 #include <memory>
 #include <algorithm>
