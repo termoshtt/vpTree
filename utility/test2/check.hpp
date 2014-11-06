@@ -3,7 +3,7 @@
 #include "exception.hpp"
 
 #include "../output.hpp"
-#include "../blas.hpp"
+#include "../algorithm.hpp"
 #include "../log.hpp"
 #include "../assert.hpp"
 
@@ -90,13 +90,10 @@ inline void check_equal(int N, const double *val, const double *ans,
       throw Test2InfiniteError(msg, id);
     }
   }
-  if (ans == nullptr || nrm2(N, ans) == 0.0) {
-    res = nrm2(N, val);
+  if (ans == nullptr || square_sum(ans, ans + N) == 0.0) {
+    res = square_sum(val, val + N);
   } else {
-    std::vector<double> tmp(N);
-    cp(N, val, &tmp[0]);
-    axpy(N, -1.0, ans, &tmp[0]);
-    res = nrm2(N, &tmp[0]) / nrm2(N, ans);
+    res = relative_error(val, val + N, ans);
   }
 
   if (res > N * threshold) {
