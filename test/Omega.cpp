@@ -4,7 +4,7 @@
 
 #include <array>
 
-namespace vp = utility::tree::vp;
+namespace vp = vpTree;
 
 typedef std::array<int, 1> Point;
 typedef unsigned int Index;
@@ -24,8 +24,7 @@ int main(int argc, char const *argv[]) {
 
   try {
     points.d(0, 2);
-  }
-  catch (utility::AssertionFailed &e) {
+  } catch (utility::AssertionFailed &e) {
     std::cout << e.what() << std::endl;
   } // deleted index
 

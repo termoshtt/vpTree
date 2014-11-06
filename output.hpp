@@ -2,9 +2,7 @@
 
 #include <ostream>
 
-namespace utility {
-namespace tree {
-namespace vp {
+namespace vpTree {
 
 template <typename Index>
 inline void show_dot(Node<Index> *n, std::ostream &ost) {
@@ -39,6 +37,4 @@ inline void show_dot_impl(size_t &count, Node<Index> *n, std::ostream &ost) {
   }
 }
 
-} // namespace vp
-} // namespace tree
-} // namespace utility
+} // namespace vpTree

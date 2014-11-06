@@ -6,9 +6,7 @@
 
 #include <algorithm>
 
-namespace utility {
-namespace tree {
-namespace vp {
+namespace vpTree {
 
 /** vpを選ぶ
  *
@@ -28,11 +26,12 @@ inline Index select_vp(Omega<Point, Index> &omega,
                        const std::vector<Index> &indices,
                        unsigned int n_trial /** 試行回数 */,
                        unsigned int m_random /** 比較する個数 */) {
+  using utility::random::select_n;
   unsigned int N = indices.size();
   n_trial = std::min(N, n_trial);
   m_random = std::min(N, m_random);
-  auto trials = random::select_n(indices.begin(), indices.end(), n_trial);
-  auto samples = random::select_n(indices.begin(), indices.end(), m_random);
+  auto trials = select_n(indices.begin(), indices.end(), n_trial);
+  auto samples = select_n(indices.begin(), indices.end(), m_random);
   double max_var = 0.0;
   Index max_idx = 0;
   for (Index t : trials) {
@@ -149,6 +148,4 @@ Node<Index> *construct(Omega<Point, Index> &omega,
   return root;
 }
 
-} // namespace vp
-} // namespace tree
-} // namespace utility
+} // namespace vpTree

@@ -5,7 +5,7 @@
 #include <array>
 
 namespace U = utility;
-namespace vp = U::tree::vp;
+namespace vp = vpTree;
 
 typedef unsigned long Index;
 typedef std::array<double, 1> Point;

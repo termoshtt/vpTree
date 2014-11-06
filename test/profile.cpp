@@ -9,7 +9,7 @@
 #include <iomanip>
 
 namespace U = utility;
-namespace vp = U::tree::vp;
+namespace vp = vpTree;
 namespace C = std::chrono;
 
 typedef unsigned long Index;

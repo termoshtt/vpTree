@@ -6,7 +6,7 @@
 #include "utility/test2.hpp"
 
 namespace U = utility;
-namespace vp = U::tree::vp;
+namespace vp = vpTree;
 
 typedef unsigned long Index;
 typedef vp::Node<Index> Node;

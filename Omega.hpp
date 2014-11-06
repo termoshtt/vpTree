@@ -8,9 +8,7 @@
 #include <tuple>
 #include <boost/range/algorithm/find.hpp>
 
-namespace utility {
-namespace tree {
-namespace vp {
+namespace vpTree {
 
 template <class Point, typename Index> class OmegaIterator;
 
@@ -55,7 +53,7 @@ public:
   float d(Index i, Index j) const {
     check_deleted(i);
     check_deleted(j);
-    return vp::d(points.at(i), points.at(j));
+    return vpTree::d(points.at(i), points.at(j));
   }
 
   /** 点を取得する */
@@ -119,6 +117,4 @@ public:
   bool operator!=(THIS &rhs) const { return !this->operator==(rhs); }
 };
 
-} // namespace vp
-} // namespace tree
-} // namespace utility
+} // namespace vpTree

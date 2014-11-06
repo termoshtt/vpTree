@@ -4,9 +4,7 @@
 #include "iterator.hpp"
 #include "search.hpp"
 
-namespace utility {
-namespace tree {
-namespace vp {
+namespace vpTree {
 
 /**
  * あるノード以下にあるインデックスを全て集める
@@ -70,6 +68,4 @@ inline void insert(Omega<Point, Index> &omega, pNode<Index> &root,
   insert(omega, root, idx, M, L, n_trial, m_random);
 }
 
-} // namespace vp
-} // namespace tree
-} // namespace utility
+} // namespace vpTree

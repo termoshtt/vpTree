@@ -9,9 +9,7 @@
 
 #include <tuple>
 
-namespace utility {
-namespace tree {
-namespace vp {
+namespace vpTree {
 
 /*!
  * @class Tree Tree.hpp "utility/tree/vp/Tree.hpp"
@@ -54,20 +52,20 @@ public:
   /** 点xの最近接要素の取得を試みる。
    *
    * @f$ \tau @f$ が小さすぎると失敗する。
-   * See also vp::get_nearest
+   * See also vpTree::get_nearest
    */
   Nearest<Index> get_nearest(const Point &x, float tau) const {
     UTILITY_ASSERT_CHECK(!empty(), "There is no point.");
     if (!root)
-      return vp::choose_nearest(omega, indices, x);
-    return vp::get_nearest(omega, root.get(), x, tau);
+      return vpTree::choose_nearest(omega, indices, x);
+    return vpTree::get_nearest(omega, root.get(), x, tau);
   }
 
   /** 要素を挿入する */
   Index insert(const Point &x) {
     Index idx = omega.insert(x);
     if (root) {
-      vp::insert(omega, root, idx, M, L, n_trial, m_random);
+      vpTree::insert(omega, root, idx, M, L, n_trial, m_random);
     } else {
       indices.push_back(idx);
       if (indices.size() > max_linear) {
@@ -108,6 +106,4 @@ public:
   }
 };
 
-} // namespace vp
-} // namespace tree
-} // namespace utility
+} // namespace vpTree

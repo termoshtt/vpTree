@@ -2,9 +2,7 @@
 
 #include "construct.hpp"
 
-namespace utility {
-namespace tree {
-namespace vp {
+namespace vpTree {
 
 /** 任意の点の最近接の LeafNode を求める */
 template <typename Point, typename Index>
@@ -92,6 +90,4 @@ get_nearest(const Omega<Point, Index> &omega,
   return near;
 }
 
-} // namespace vp
-} // namespace tree
-} // namespace utility
+} // namespace vpTree

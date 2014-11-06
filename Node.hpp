@@ -6,9 +6,7 @@
 #include <memory>
 #include <algorithm>
 
-namespace utility {
-namespace tree {
-namespace vp {
+namespace vpTree {
 
 template <typename Index> class Node;
 template <typename Index> class LeafNode;
@@ -120,6 +118,4 @@ public:
   bool is_full() const { return points.size() >= l; }
 };
 
-} // namespace vp
-} // namespace tree
-} // namespace utility
+} // namespace vpTree

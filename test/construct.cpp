@@ -7,7 +7,7 @@
 #include "utility/log.hpp"
 
 namespace U = utility;
-namespace vp = U::tree::vp;
+namespace vp = vpTree;
 
 typedef std::array<double, 1> Point;
 typedef unsigned int Index;

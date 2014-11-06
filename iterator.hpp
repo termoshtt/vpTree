@@ -6,9 +6,7 @@
 #include <memory>
 #include <algorithm>
 
-namespace utility {
-namespace tree {
-namespace vp {
+namespace vpTree {
 
 /** vp-treeを巡回するイテレータ
  *
@@ -136,6 +134,4 @@ template <typename Index> TreeIterator<Index> end(Node<Index> *) {
   return TreeIterator<Index>();
 }
 
-} // namespace vp
-} // namespace tree
-} // namespace utility
+} // namespace vpTree
