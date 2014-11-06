@@ -18,8 +18,13 @@ macro(mytest name type src)
 endmacro(mytest)
 
 add_custom_target(
-    document_html
+    document
     COMMAND "doxygen" "doc/Doxyfile"
+)
+
+add_custom_target(
+    ctags ALL
+    COMMAND "ctags" "-R" "-f" ".tags" "--languages=C++,python" "--exclude='CMake*'"
 )
 
 include_directories(.)

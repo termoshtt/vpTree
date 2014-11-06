@@ -13,7 +13,7 @@ namespace vpTree {
 template <class Point, typename Index> class OmegaIterator;
 
 /**
- * @class Omega Omega.hpp "utility/tree/vp/Omega.hpp"
+ * @class Omega Omega.hpp "vpTree/Omega.hpp"
  * 考えている点の集合 @f$ \Omega = \{ x_i \} @f$
  *
  * - 削除後にもインデックス @f$ i @f$ を無効化しない
@@ -81,7 +81,7 @@ private:
 };
 
 /*!
- * @class OmegaIterator Omega.hpp "utility/tree/vp/Omega.hpp"
+ * @class OmegaIterator Omega.hpp "vpTree/Omega.hpp"
  * @brief Omega で管理されている要素を巡回する
  */
 template <class Point, typename Index> class OmegaIterator {

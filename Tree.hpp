@@ -9,10 +9,11 @@
 
 #include <tuple>
 
+/** vantage-point tree */
 namespace vpTree {
 
 /*!
- * @class Tree Tree.hpp "utility/tree/vp/Tree.hpp"
+ * @class Tree Tree.hpp "vpTree/Tree.hpp"
  * @brief vantage-point tree
  *
  * このライブラリが提供している機能を使いやすいようにラップしたクラス。

@@ -8,7 +8,9 @@
 
 namespace vpTree {
 
-/** vp-treeを巡回するイテレータ
+/*!
+ * @class TreeIterator iterator.hpp "vpTree/iterator.hpp"
+ * @brief vp-treeを巡回するイテレータ
  *
  * 状態としてありえるのは
  *  - Nodeを指している

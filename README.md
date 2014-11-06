@@ -21,7 +21,7 @@ Document
 Please generate using Doxygen
 
 ```
-make document_html
+make document
 ```
 
 or 

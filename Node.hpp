@@ -15,7 +15,7 @@ template <typename Index> using pNode = std::unique_ptr<Node<Index> >;
 template <typename Index> using pLeafNode = std::unique_ptr<LeafNode<Index> >;
 
 /*!
- * \class Node Node.hpp "utility/tree/vp/Node.hpp"
+ * \class Node Node.hpp "vpTree/Node.hpp"
  * non-leaf node
  *
  * - 一つのPointだけ持つ
@@ -98,7 +98,7 @@ public:
 };
 
 /*!
- * \class LeafNode Node.hpp "utility/tree/vp/Node.hpp"
+ * \class LeafNode Node.hpp "vpTree/Node.hpp"
  * leaf node
  */
 template <typename Index> class LeafNode {

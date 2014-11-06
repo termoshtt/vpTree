@@ -70,7 +70,10 @@ std::vector<Index> register_points(Omega<Point, Index> &omega,
   return std::move(indices);
 }
 
-/** 距離でインデックスをソートするための構造体 */
+/*!
+ * @struct PreNode construct.hpp "vpTree/construct.hpp"
+ * @brief 距離でインデックスをソートするための構造体
+ */
 template <typename Index> struct PreNode {
   Index idx;
   float d;
