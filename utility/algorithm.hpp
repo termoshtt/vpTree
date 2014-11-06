@@ -6,23 +6,21 @@
 
 namespace utility {
 
-#ifndef ItrValueType
-#define ItrValueType(Iterator)                                                 \
-  typename std::iterator_traits<Iterator>::value_type
-#else
-#error "ItrValueType has already been defined."
-#endif
+template <typename Iterator>
+using iterator_v = typename std::iterator_traits<Iterator>::value_type;
+template <typename Iterator>
+using iterator_d = typename std::iterator_traits<Iterator>::difference_type;
 
 template <typename InputIterator>
 inline void scal(InputIterator begin, InputIterator end,
-                 ItrValueType(InputIterator) alpha) {
+                 iterator_v<InputIterator> alpha) {
   std::transform(begin, end, begin,
-                 [=](ItrValueType(InputIterator) x) { return alpha * x; });
+                 [=](iterator_v<InputIterator> x) { return alpha * x; });
 }
 
 template <class InputIterator>
 inline void clear(InputIterator begin, InputIterator end,
-                  ItrValueType(InputIterator) zero = 0) {
+                  iterator_v<InputIterator> zero = 0) {
   while (begin != end) {
     *begin++ = zero;
   }
@@ -30,9 +28,9 @@ inline void clear(InputIterator begin, InputIterator end,
 
 /** square of L2-norm */
 template <class InputIterator>
-inline ItrValueType(InputIterator)
-    square_sum(InputIterator begin, InputIterator end) {
-  typedef ItrValueType(InputIterator) T;
+inline iterator_v<InputIterator> square_sum(InputIterator begin,
+                                            InputIterator end) {
+  typedef iterator_v<InputIterator> T;
   return std::accumulate(begin, end, T(0), [=](T x, T y) { return x + y * y; });
 }
 
@@ -43,8 +41,8 @@ inline double l2(InputIterator begin, InputIterator end) {
 }
 
 template <class InputIterator>
-inline ItrValueType(InputIterator) l1(InputIterator begin, InputIterator end) {
-  typedef ItrValueType(InputIterator) T;
+inline iterator_v<InputIterator> l1(InputIterator begin, InputIterator end) {
+  typedef iterator_v<InputIterator> T;
   return std::accumulate(begin, end, T(0),
                          [=](T x, T y) { return x + std::abs(y); });
 }
@@ -53,8 +51,8 @@ inline ItrValueType(InputIterator) l1(InputIterator begin, InputIterator end) {
 template <class InputIterator1, class InputIterator2>
 inline double euclid_distance(InputIterator1 x_begin, InputIterator1 x_end,
                               InputIterator2 y_begin) {
-  typedef ItrValueType(InputIterator1) T1;
-  typedef ItrValueType(InputIterator2) T2;
+  typedef iterator_v<InputIterator1> T1;
+  typedef iterator_v<InputIterator2> T2;
   double sum = 0.0;
   while (x_begin != x_end) {
     T1 x = *x_begin++;
@@ -71,8 +69,8 @@ inline double euclid_distance(InputIterator1 x_begin, InputIterator1 x_end,
 template <class InputIterator1, class InputIterator2>
 inline double relative_error(InputIterator1 x_begin, InputIterator1 x_end,
                              InputIterator2 y_begin) {
-  typedef ItrValueType(InputIterator1) T1;
-  typedef ItrValueType(InputIterator2) T2;
+  typedef iterator_v<InputIterator1> T1;
+  typedef iterator_v<InputIterator2> T2;
   double dif = 0.0;
   double nrm_x = 0.0;
   double nrm_y = 0.0;
