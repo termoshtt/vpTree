@@ -42,8 +42,10 @@ public:
        unsigned int m_random /** select_vpにおける比較にしようする個数 */)
       : M(M), L(L), max_linear(max_linear), n_trial(n_trial),
         m_random(m_random), indices(0) {
+    UTILITY_ASSERT_CHECK(M >= 2, "branching factor must be larger than 2");
+    UTILITY_ASSERT_CHECK(L > M, "L must be exactly larger than M");
     UTILITY_ASSERT_CHECK(max_linear >= M,
-                         "There must be M indices to create a tree");
+                         "max_linear is too small to create a tree");
     indices.reserve(max_linear);
   }
 
