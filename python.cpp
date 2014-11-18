@@ -41,6 +41,10 @@ public:
        unsigned int n_trial, unsigned int m_random)
       : Inherited(M, L, max_linear, n_trial, m_random) {}
   np::ndarray get(unsigned long i) const { return Inherited::get(i); }
+  p::tuple get_nearest(const Point &x, float tau) const {
+    auto near = Inherited::get_nearest(x, tau);
+    return p::make_tuple(std::get<0>(near), std::get<1>(near));
+  }
 };
 
 BOOST_PYTHON_MODULE(vptree) {
