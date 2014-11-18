@@ -29,3 +29,12 @@ add_custom_target(
 
 include_directories(.)
 add_subdirectory(test EXCLUDE_FROM_ALL)
+
+find_package(Boost COMPONENTS python3 REQUIRED)
+find_package(PythonLibs REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS} ${PYTHON_INCLUDE_DIRS})
+
+add_library(vptree SHARED python.cpp)
+target_link_libraries(vptree ${Boost_LIBRARIES} ${PYTHON_LIBRARY} boost_numpy)
+set_target_properties(vptree PROPERTIES PREFIX "")
+install(TARGETS vptree LIBRARY DESTINATION "lib")
