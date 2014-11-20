@@ -22,10 +22,22 @@ inline float d<np::ndarray>(const np::ndarray &x, const np::ndarray &y) {
   size_t N = size(x);
   if (size(y) != N)
     throw std::runtime_error("Size mismatch");
-  double *x0 = reinterpret_cast<double *>(x.get_data());
-  double *y0 = reinterpret_cast<double *>(y.get_data());
-
-  double ed = utility::euclid_distance(x0, x0 + N, y0);
+  auto x_type = x.get_dtype();
+  auto y_type = y.get_dtype();
+  if (x_type != y_type)
+    throw std::runtime_error("Type of arguments mismatch");
+  double ed = 0;
+  if (x_type == np::dtype::get_builtin<double>()) {
+    double *x0 = reinterpret_cast<double *>(x.get_data());
+    double *y0 = reinterpret_cast<double *>(y.get_data());
+    ed = utility::euclid_distance(x0, x0 + N, y0);
+  } else if (x_type == np::dtype::get_builtin<long long>()) {
+    long long *x0 = reinterpret_cast<long long *>(x.get_data());
+    long long *y0 = reinterpret_cast<long long *>(y.get_data());
+    ed = utility::euclid_distance(x0, x0 + N, y0);
+  } else {
+    throw std::runtime_error("Only int64 and float64 are supported");
+  }
   return ed / (1 + ed);
 }
 
@@ -50,6 +62,8 @@ public:
 BOOST_PYTHON_MODULE(vpTree) {
   Py_Initialize();
   np::initialize();
+
+  p::def("d", &vpTree::d<np::ndarray>);
 
   auto t = p::class_<Tree, boost::noncopyable>(
       "Tree", p::init<unsigned short, unsigned short, unsigned long,
