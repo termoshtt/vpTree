@@ -47,7 +47,7 @@ public:
   }
 };
 
-BOOST_PYTHON_MODULE(vptree) {
+BOOST_PYTHON_MODULE(vpTree) {
   Py_Initialize();
   np::initialize();
 
