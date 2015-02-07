@@ -25,18 +25,7 @@ endif(MAKE_SHARED_LIB)
 
 # Testing
 # ======
-enable_testing()
-add_custom_target(short_test COMMAND "ctest" "-V" "-R" "TEST_.*_S")
-add_custom_target(build_test)
-add_dependencies(short_test build_test)
-macro(mytest name type src)
-    set(test_name TEST_${name}_${type})
-    add_executable(${test_name} ${src})
-    target_link_libraries(${test_name} ${ARGN})
-    add_test(${test_name} ${CMAKE_CURRENT_BINARY_DIR}/${test_name})
-    add_dependencies(build_test ${test_name})
-    unset(test_name)
-endmacro(mytest)
+include(NumTest/NumTest.cmake)
 add_subdirectory(test)
 
 # utility

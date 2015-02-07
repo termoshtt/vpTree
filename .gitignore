@@ -25,7 +25,7 @@ install_manifest.txt
 Makefile
 
 # for test
-TEST*
+NumTest_*
 CTestTestfile.cmake
 Testing
 

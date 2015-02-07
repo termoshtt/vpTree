@@ -1,0 +1,3 @@
+[submodule "NumTest"]
+	path = NumTest
+	url = http://github.com/termoshtt/NumTest.git
