@@ -1,7 +1,5 @@
 #pragma once
 
-#include "utility/assert.hpp"
-
 #include <vector>
 #include <memory>
 #include <algorithm>
@@ -35,7 +33,7 @@ public:
       : root(root), n(root), l(nullptr), now(0) {}
 
   value_type operator*() const {
-    UTILITY_ASSERT_CHECK(n || l, "Range overrun");
+    check(n || l, "Range overrun");
     if (n)
       return n->vp;
     return l->points[now];

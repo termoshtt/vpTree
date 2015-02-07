@@ -100,10 +100,10 @@ Node<Index> *construct(Omega<Point, Index> &omega,
                        unsigned short L /** size of leaf node */,
                        unsigned int n_trial /** 試行回数 */,
                        unsigned int m_random /** 比較する個数 */) {
-  UTILITY_ASSERT_CHECK(M >= 2, "branching factor must be larger than 2");
-  UTILITY_ASSERT_CHECK(indices.size() >= (size_t)(M + 1),
+  check(M >= 2, "branching factor must be larger than 2");
+  check(indices.size() >= (size_t)(M + 1),
                        "Too small indices to create node");
-  UTILITY_ASSERT_CHECK(L > M, "L must be exactly larger than M");
+  check(L > M, "L must be exactly larger than M");
   const size_t count = indices.size() - 1;
 
   /* vpを決めてソートしておく */

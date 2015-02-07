@@ -1,5 +1,6 @@
 
 #include "../Omega.hpp"
+#include "../exception.hpp"
 #include "utility/test2.hpp"
 
 #include <array>
@@ -24,7 +25,8 @@ int main(int argc, char const *argv[]) {
 
   try {
     points.d(0, 2);
-  } catch (utility::AssertionFailed &e) {
+  }
+  catch (vp::Error &e) {
     std::cout << e.what() << std::endl;
   } // deleted index
 

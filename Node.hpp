@@ -1,6 +1,6 @@
 #pragma once
 
-#include "utility/assert.hpp"
+#include "exception.hpp"
 
 #include <vector>
 #include <memory>
@@ -77,9 +77,9 @@ public:
 
   /** 新しいノードを追加する */
   Node<Index> *new_Node(unsigned short m, Index idx) {
-    UTILITY_ASSERT_CHECK(children.size() < m, "branching factor");
-    UTILITY_ASSERT_CHECK(leaves.size() == 0,
-                         "Node<Index> should has children only or leaves only");
+    check(children.size() < m, "branching factor");
+    check(leaves.size() == 0,
+          "Node<Index> should has children only or leaves only");
     auto *node = new Node<Index>(m, idx);
     node->parent = this;
     children.emplace_back(node);
@@ -88,9 +88,9 @@ public:
 
   /** 新しい葉ノードを追加する */
   LeafNode<Index> *new_LeafNode(unsigned short l) {
-    UTILITY_ASSERT_CHECK(leaves.size() < m, "branching factor");
-    UTILITY_ASSERT_CHECK(children.size() == 0,
-                         "Node<Index> should has children only or leaves only");
+    check(leaves.size() < m, "branching factor");
+    check(children.size() == 0,
+          "Node<Index> should has children only or leaves only");
     auto *leaf = new LeafNode<Index>(l, *this);
     leaves.emplace_back(leaf);
     return leaf;
@@ -112,7 +112,7 @@ public:
       : l(l), parent(parent) {}
 
   void add(Index idx) {
-    UTILITY_ASSERT_CHECK(points.size() < l, "size of leaf");
+    check(points.size() < l, "size of leaf");
     points.push_back(idx);
   }
   bool is_full() const { return points.size() >= l; }

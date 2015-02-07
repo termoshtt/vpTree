@@ -5,7 +5,6 @@
 #include "../output.hpp"
 #include "../algorithm.hpp"
 #include "../log.hpp"
-#include "../assert.hpp"
 
 #include <cmath>
 #include <fstream>
@@ -49,7 +48,7 @@ inline void check_equal(int i0, int i1, const char *msg, const char *filename,
 inline void check_equal(double val, double ans, double threshold,
                         const char *msg, const char *filename, int line,
                         const char *funcname) throw(Test2RealCompareError) {
-  UTILITY_ASSERT_CHECK(threshold > 0, "Threshold must be positive");
+  // check(threshold > 0, "Threshold must be positive");
 
   char id[1024];
   sprintf(id, "%s:%d:%s", filename, line, funcname);

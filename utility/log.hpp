@@ -1,7 +1,5 @@
 #pragma once
 
-#include "assert.hpp"
-
 #include <ctime>
 #include <iostream>
 #include <sstream>
@@ -35,7 +33,7 @@ inline std::string filename(std::string prefix, std::string extention,
       index_str = std::string("0") + index_str;
     }
   }
-  UTILITY_ASSERT_CHECK(index_str.size() == max_size, "");
+  // check(index_str.size() == max_size, "");
   if (extention[0] != '.') {
     extention = std::string(".") + extention;
   }

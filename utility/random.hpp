@@ -1,7 +1,5 @@
 #pragma once
 
-#include "assert.hpp"
-
 #include <random>
 #include <fstream>
 #include <vector>
@@ -115,7 +113,7 @@ template <class RandomAccessItrator,
 inline std::vector<T> select_n(RandomAccessItrator begin,
                                RandomAccessItrator end, size_t n) {
   size_t M = end - begin;
-  UTILITY_ASSERT_CHECK(M >= n, "size is too small");
+  // check(M >= n, "size is too small");
   if (M == n)
     return std::vector<T>(begin, end);
   std::vector<size_t> idx(n);
