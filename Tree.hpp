@@ -42,9 +42,9 @@ public:
        unsigned int m_random /** select_vpにおける比較にしようする個数 */)
       : M(M), L(L), max_linear(max_linear), n_trial(n_trial),
         m_random(m_random), indices(0) {
-    UTILITY_ASSERT_CHECK(M >= 2, "branching factor must be larger than 2");
-    UTILITY_ASSERT_CHECK(L > M, "L must be exactly larger than M");
-    UTILITY_ASSERT_CHECK(max_linear >= M,
+    check(M >= 2, "branching factor must be larger than 2");
+    check(L > M, "L must be exactly larger than M");
+    check(max_linear >= M,
                          "max_linear is too small to create a tree");
     indices.reserve(max_linear);
   }
@@ -58,7 +58,7 @@ public:
    * See also vpTree::get_nearest
    */
   Nearest<Index> get_nearest(const Point &x, float tau) const {
-    UTILITY_ASSERT_CHECK(!empty(), "There is no point.");
+    check(!empty(), "There is no point.");
     if (!root)
       return vpTree::choose_nearest(omega, indices, x);
     return vpTree::get_nearest(omega, root.get(), x, tau);

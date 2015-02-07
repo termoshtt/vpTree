@@ -1,7 +1,7 @@
 #pragma once
 
 #include "distance.hpp"
-#include "utility/assert.hpp"
+#include "exception.hpp"
 
 #include <vector>
 #include <deque>
@@ -75,7 +75,7 @@ private:
     using boost::range::find;
     if (!deleted.empty()) {
       auto itr = find(deleted, idx);
-      UTILITY_ASSERT_CHECK(itr != deleted.end(), "deleted index");
+      check(itr != deleted.end(), "deleted index");
     }
   }
 };

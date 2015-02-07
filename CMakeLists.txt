@@ -37,7 +37,7 @@ macro(mytest name type src)
     add_dependencies(build_test ${test_name})
     unset(test_name)
 endmacro(mytest)
-add_subdirectory(test EXCLUDE_FROM_ALL)
+add_subdirectory(test)
 
 # utility
 # =======

@@ -54,7 +54,7 @@ inline void insert(Omega<Point, Index> &omega, pNode<Index> &root, Index idx,
       return;
     }
   }
-  UTILITY_ASSERT_CHECK(0, "Unknown error");
+  check(0, "Unknown error");
 }
 
 /** 点を木に挿入する */
