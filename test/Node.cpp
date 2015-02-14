@@ -3,9 +3,8 @@
 #include "../iterator.hpp"
 #include "../output.hpp"
 
-#include "utility/test2.hpp"
+#include "NumTest/Test.hpp"
 
-namespace U = utility;
 namespace vp = vpTree;
 
 typedef unsigned long Index;
@@ -34,33 +33,35 @@ Node *test_tree() {
   return a;
 }
 
-void test_get_covering_node() {
+int test_get_covering_node() {
   Node node(5, 0);
   node.mu = { 0.2, 0.3 };
-  TEST2_CHECK_EQUAL_INT(node.get_covering_node(0.0), 0);
-  TEST2_CHECK_EQUAL_INT(node.get_covering_node(0.25), 1);
-  TEST2_CHECK_EQUAL_INT(node.get_covering_node(0.35), 2);
+  NumTest::Test t("get_covering_node");
+  t.equal_int(node.get_covering_node(0.0), 0);
+  t.equal_int(node.get_covering_node(0.25), 1);
+  t.equal_int(node.get_covering_node(0.35), 2);
+  return t;
 }
 
-void test_iterator() {
+int test_iterator() {
   pNode p(test_tree());
   auto b = vp::begin(p.get());
   auto e = vp::end(p.get());
-  TEST2_CHECK_EQUAL_INT(*b++, 0);
-  TEST2_CHECK_EQUAL_INT(*b++, 1);
-  TEST2_CHECK_EQUAL_INT(*b++, 3);
-  TEST2_CHECK_EQUAL_INT(*b++, 4);
-  TEST2_CHECK_EQUAL_INT(*b++, 5);
-  TEST2_CHECK_EQUAL_INT(*b++, 2);
-  TEST2_CHECK_EQUAL_INT(*b++, 6);
-  TEST2_CHECK_EQUAL_INT(*b++, 7);
-  TEST2_CHECK_EQUAL_INT(*b++, 8);
-  TEST2_CHECK_EQUAL_INT(*b++, 9);
-  TEST2_CHECK(b == e);
+  NumTest::Test t("iterator");
+  t.equal_int(*b++, 0);
+  t.equal_int(*b++, 1);
+  t.equal_int(*b++, 3);
+  t.equal_int(*b++, 4);
+  t.equal_int(*b++, 5);
+  t.equal_int(*b++, 2);
+  t.equal_int(*b++, 6);
+  t.equal_int(*b++, 7);
+  t.equal_int(*b++, 8);
+  t.equal_int(*b++, 8);
+  t.equal_other(b, e) << "check range is fully tested";
+  return t;
 }
 
 int main(int argc, char const *argv[]) {
-  test_get_covering_node();
-  test_iterator();
-  return 0;
+  return test_get_covering_node() + test_iterator();
 }
